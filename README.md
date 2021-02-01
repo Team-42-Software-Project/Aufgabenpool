@@ -3,7 +3,7 @@
 Teamname: Team 42
 
 Teammitglieder:
-* Annette Müller,
+* Anette Müller,
 * Patrick Weber,
 * Gisela Phillips (giselaphillips),
 * Melanie Rast (Melanie-GymOb)
