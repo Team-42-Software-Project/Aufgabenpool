@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{%block head %}
+<title>HOME</title>
+{% endblock%}
+
+{%block body %}
+<br>
+<h1>Aufgaben Pool</h1>
+<br>
+<div>
+    <div class="bg-light p-5 rounded">
+        <div class="col-sm-8 mx-auto">
+            <h1>Herzlich Willkommen</h1>
+            <br>
+            <br>
+            <br>
+
+            <h2>Geben Sie eine Aufgabe ein</h2>
+            
+                <a class="btn btn-primary" href="/new/" role="button">Aufgabe Eingeben
+                    </a>
+            </p>
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <h2>Holen Sie sich ein Aufgabenblatt ab: </h2>
+
+            <a class="btn btn-primary" href="/aufgaben/" role="button">Aufgabenblatt erstellen
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock%}
