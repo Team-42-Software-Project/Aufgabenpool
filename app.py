@@ -92,7 +92,7 @@ def get_req():
 def email():
     return render_template('email.html')
 
-
+ 
 
 
 
