@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{%block head  %}
+<title>Aufgaben</title>
+{% endblock%}
+
+{%block body  %}
+
+
+<br>
+<br>
+
+<h2>Erstellen Sie eine Aufgabe:</h2>
+<br>
+<form action ='/new/' method='POST'>
+   
+   <label for="fach" >Fach</label>
+   <select class="form-select" type="text" name='fach' id='fach', placeholder="Enter Fach" aria-label="Fach">
+      
+      <option value="Mathe">Mathe</option>
+      <option value="Franz">Franz</option>
+    </select>
+
+    <br>
+  
+    <label for="thema" >Thema</label>
+
+    
+
+  <select class="form-select" type="text" name='thema' id='thema', placeholder="Enter Thema" aria-label="thema">
+    
+      <option value="Algebra">Algebra</option>
+      <option value="Geometrie">Geometrie</option>
+ 
+      <option value="Gramatik">Gramatik</option>
+      <option value="Lecture">Lecture</option>
+    </select>
+  
+
+   <br>
+
+ 
+   <label for="aufgabe" >Aufgabe</label>
+   <textarea class="form-control" id='aufgabe' type='text' name='aufgabe' placeholder="Enter Aufgabe" rows="15"></textarea>
+
+   <br>
+
+   <label for="Author" >Author</label>
+    <input class="form-control" type='text' name='author' id='author' placeholder="Enter author">
+   <br>
+
+
+
+
+   <input type='submit' value='Post' href="/new/" class="btn btn-success"  role="button">
+
+   
+   <a class="btn btn-primary" href="/eingabe/" role="button">Zur Datenbank</a>
+</form>
+  
+
+
+{% endblock%}
+ 
