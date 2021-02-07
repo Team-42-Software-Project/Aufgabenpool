@@ -29,9 +29,26 @@ def index():
 
 @app.route('/eingabe/', methods=['GET','POST'])
 def posts():
-    
+         
+    if request.method=='POST':
+         post_fach= request.form['fach']
+         post_thema= request.form['thema']
+         post_aufgabe= request.form['aufgabe']
+         post_author= request.form['author']
+         new_post =Aufgabe(fach=post_fach,thema=post_thema, aufgabe= post_aufgabe, author=post_author)
+        
+         db.session.add(new_post)
+         db.session.commit()
+
+         
+         return redirect('/eingabe/')
+    else:
         all_posts=Aufgabe.query.order_by(Aufgabe.date_posted).all()
-        return render_template('eingabe.html', posts=all_posts)
+        return render_template('eingabe.html', post=all_posts)
+
+
+    return render_template('eingabe.html', post= all_posts)
+
 
 
 @app.route('/eingabe/edit/<int:id>', methods=['GET', 'POST'])
@@ -44,7 +61,6 @@ def edit(id):
         post.aufgabe= request.form['aufgabe']
         post.author= request.form['author']
         db.session.commit()
-
         return redirect('/eingabe/')
     else: 
         return render_template('edit.html', post=post)
