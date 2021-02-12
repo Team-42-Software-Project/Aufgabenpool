@@ -1,4 +1,4 @@
-# Aufgabenpool
+# PrepPool
 
 Teamname: Team 42
 
