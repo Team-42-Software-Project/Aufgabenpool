@@ -1,4 +1,4 @@
-# PrepPool 4242
+# PrepPool 
 
 Teamname: Team 42, super
 
