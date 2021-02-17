@@ -7,4 +7,4 @@ Die Web-Applikation "prepPool" besteht aus drei Komponenten und dem Framwork "Fl
 
 #Beschreibung Deployment-Diagramm
 
-Das "prepPool"-Backend und die Datenbank werden auf dem Webserver deployed. Nuter führen das Frontend lokal in ihrem Webbrowser aus.
+Das "prepPool"-Backend und die Datenbank werden auf dem Webserver deployed. Nutzer führen das Frontend lokal in ihrem Webbrowser aus.
