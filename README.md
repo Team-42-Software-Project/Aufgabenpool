@@ -1,6 +1,6 @@
 # PrepPool 
 
-Teamname: Team 42, super
+Teamname: Team 42
 
 Teammitglieder:
 * Annette Müller,
