@@ -19,7 +19,7 @@ Die Web-Applikation "PrepPool" besteht aus drei Komponenten und dem Framework "F
 **Datenbank**: Die Datenbank ist verantwortlich für die sichere, dauerhafte und effiziente Speicherung der verwalteten Daten. Dazu gehören die Nutzerdaten, wie Vorname, Nachname, Passwort, E-Mail, Schule, die von einer Lehrperson erfassten Themen und Aufgaben.
 
 **Admin**: Der Systemadministrator ist verantwortlich für den Unterhalt der Webseite, die Autorisierung von Account-Anfragen, die Pflege der Nutzerdaten. Er kann über das Frontend kontaktiert werden und mit den Nutzern per E-Mail kommunizieren.  
-
+### ###
 
 
 ## Beschreibung Deployment-Diagramm ##
