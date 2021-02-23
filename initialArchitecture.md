@@ -1,10 +1,12 @@
-##Beschreibung Komponenten-Diagramm## 
+## Beschreibung Komponenten-Diagramm ## 
 
-#Übersicht# 
+
+### Übersicht ###
 
 Die Web-Applikation "PrepPool" besteht aus drei Komponenten und dem Framework "Flask", das die Infrastruktur für das Backend bereitstellt. Das "Poolmanagement" im Frontend ist durch ein User-Interface mit dem Akteur verbunden. Frontend und Backend kommunizieren über "HTML GET/PUT"-Operationen und das Backend ist über SQL mit einer Datenbank verbunden. Das SQL-Interface bietet auch dem Systemadministrator die Möglichkeit Daten zu ändern. 
 
-#Details# 
+
+### Details ###
 
 **Akteur**: Ist ein Nutzer von PrepPool. Lehrpersonen bilden das Zielpublikum von PrepPool.
 
@@ -19,6 +21,7 @@ Die Web-Applikation "PrepPool" besteht aus drei Komponenten und dem Framework "F
 **Admin**: Der Systemadministrator ist verantwortlich für den Unterhalt der Webseite, die Autorisierung von Account-Anfragen, die Pflege der Nutzerdaten. Er kann über das Frontend kontaktiert werden und mit den Nutzern per E-Mail kommunizieren.
 
 
-##Beschreibung Deployment-Diagramm##
+
+### Beschreibung Deployment-Diagramm ###
 
 Das "PrepPool"-Backend inkl. Flask und die Datenbank werden auf dem Webserver deployed. Nutzer führen das Frontend lokal in ihrem Webbrowser aus.
