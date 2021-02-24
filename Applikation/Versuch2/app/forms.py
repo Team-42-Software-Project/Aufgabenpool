@@ -4,7 +4,7 @@ from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, IntegerField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from app.models import User, Aufgabe
+from app.models import User, Aufgabe, Thema
 
 
 class RegistrationForm(FlaskForm):
@@ -60,4 +60,8 @@ class PostForm(FlaskForm):
     thema=StringField('Thema', validators=[DataRequired()])
     level=IntegerField('Level', validators=[DataRequired()])
     aufgabe=TextAreaField('Aufgabe', validators=[DataRequired()])
+    submit=SubmitField('Post')
+
+class ThemaForm(FlaskForm):
+    thema=StringField('Thema', validators=[DataRequired()])
     submit=SubmitField('Post')

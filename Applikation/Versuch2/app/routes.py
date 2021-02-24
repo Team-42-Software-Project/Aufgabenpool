@@ -4,8 +4,8 @@ import secrets
 from PIL import Image
 from flask import render_template, request, redirect, url_for, flash, abort
 from app import app, db, bcrypt 
-from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
-from app.models import User, Aufgabe
+from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, ThemaForm
+from app.models import User, Aufgabe, Thema
 from flask_login import login_user, current_user, logout_user, login_required
 
 @app.route('/')
@@ -150,7 +150,19 @@ def new_post():
     
     return render_template('new_post2.html', title= 'Neue Aufgabe', form=form, legend='Neue Aufgabe')
 
-
+@app.route('/topic/', methods=['GET', 'POST'])
+@login_required
+def themen():
+    form=ThemaForm()
+    if form.validate_on_submit():
+        post=Thema(thema=form.thema.data, user_id=1) 
+        db.session.add(post)
+        db.session.commit()
+        flash('Thema wurde erstellt', 'success')
+        return redirect('/topic/')
+    else:
+        topics = Thema.query.order_by(Thema.thema).all()
+        return render_template('themen.html', form=form, topics=topics)
 
 
 @app.route('/eingabe/delete/<int:post_id>', methods=['POST'] )
