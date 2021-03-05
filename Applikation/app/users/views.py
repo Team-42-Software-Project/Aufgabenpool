@@ -1,7 +1,7 @@
 import os
 import secrets
 from flask import Blueprint, render_template, request, redirect, url_for, flash, abort
-from app import app, db#, bcrypt 
+from app import app, db, bcrypt 
 from app.users.forms import RegistrationForm
 
 from app.users.models import User
@@ -21,6 +21,7 @@ def register():
             db.session.add(user)
             db.session.commit()
             flash(f'Account wurde gemacht, Sie können sich einloggen', 'success')
-            return redirect(url_for('users.login')) 
+            #return redirect(url_for('users.login')) 
+            return "hier muss man zum Login kommen TODO."
 
     return render_template('users/register.html', form=form)

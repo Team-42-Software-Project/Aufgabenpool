@@ -13,7 +13,7 @@ app.config['SECRET_KEY']='ecae627829ff8e6a39cc4c285c024e29'
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///datenbank.db'
 db=SQLAlchemy(app)
 
-#bcrypt= Bcrypt(app)
+bcrypt= Bcrypt(app)
 login_manager= LoginManager(app)
 login_manager.login_view= 'login'
 login_manager.login_message_category='info'
