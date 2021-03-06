@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, IntegerField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from app.users.models import User
 
@@ -22,3 +22,12 @@ class RegistrationForm(FlaskForm):
 
         if user:
             raise ValidationError('That email is taken')
+
+
+class LoginForm(FlaskForm):
+    email=StringField ('Email', validators=[DataRequired(), Email()])
+    password=PasswordField('Password', validators=[DataRequired()])
+    remember=BooleanField('Remember Me')
+    submit=SubmitField('Login')
+
+
