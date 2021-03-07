@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{%block head  %}
+<title>Themen</title>
+{% endblock%}
+
+{%block body  %}
+
+
+<br>
+<br>
+<div class="content">
+    <h1 style="text-align: center"> Themenübersicht</h1>
+    {% if topics|length < 1 %}
+    <h4 style="text-align: center">Es gibt noch keine Themen. Bitte geben Sie eines ein.</h4>
+    {% endif %}
+    <table>
+        <tr>
+            <th>Thema</th>
+            <th>Hinzugefügt am</th>
+        </tr>
+        {% for topic in topics %}
+        <tr>
+            <td>{{topic.content}}</td>
+            <td>{{topic.date_created.date()}}</td>
+           
+        </tr>
+        {% endfor %}
+    </table>
+
+ <div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+
+        <br>
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4"> Neues Thema eingeben: </legend>
+
+            <div class="form-group">
+            {{ form.topic.label(class="form-control-label") }}
+            {%if form.topic.errors%}
+                {{ form.topic(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+                {%for error in form.topic.errors%}
+                <span> {{error}} </span>
+                  {%endfor%}
+                </div>
+              {%else%}
+              {{form.topic (class="form-control form-control-lg") }}
+              {%endif%}
+            </div>
+
+      
+        </fieldset>
+        <br>
+        <div class="form-group">
+        {{form.submit(class="btn btn-outline-info") }}
+        </div>
+        <br>
+    </form>
+</div>
+<br>
+<a class="btn btn-primary" href='/home' role="button">Zur Übersicht
+</a>
+
+  <br>
+  <br>
+{% endblock%}

@@ -10,5 +10,7 @@ def home():
 
 @app.route('/home')
 def home2():
-   
     return render_template('home2.html')
+
+
+  

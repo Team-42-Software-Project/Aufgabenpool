@@ -18,10 +18,15 @@ login_manager= LoginManager(app)
 login_manager.login_view= 'login'
 login_manager.login_message_category='info'
 
-from app import routes
-#from app import views
+
+from app import views
+
 from app.users.views import mod as usersModule
 app.register_blueprint(usersModule)
+from app.posts.views import postmod as postsModule
+app.register_blueprint(postsModule)
+from app.topics.views import topicmod as topicsModule
+app.register_blueprint(topicsModule)
 
 
 

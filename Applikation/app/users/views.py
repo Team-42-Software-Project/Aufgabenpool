@@ -22,7 +22,7 @@ def register():
             db.session.commit()
             flash(f'Account wurde gemacht, Sie können sich einloggen', 'success')
             return redirect(url_for('users.login')) 
-            #return "hier muss man zum Login kommen TODO."
+
 
     return render_template('users/register.html', form=form)
 
