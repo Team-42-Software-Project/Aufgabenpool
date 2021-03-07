@@ -18,11 +18,13 @@
         <tr>
             <th>Thema</th>
             <th>Hinzugefügt am</th>
+            <th>von User No</th>
         </tr>
         {% for topic in topics %}
         <tr>
             <td>{{topic.content}}</td>
             <td>{{topic.date_created.date()}}</td>
+            <td>{{topic.user_id}}</td>
            
         </tr>
         {% endfor %}

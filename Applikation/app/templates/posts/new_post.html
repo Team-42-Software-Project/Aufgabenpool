@@ -2,8 +2,6 @@
 
 {%block body %}
 
-XXX
-
 <div class="content-section">
     <form method ="POST" action="">
     
@@ -29,35 +27,28 @@ XXX
 
           </div>
           <br>
-          <div class="form-group">
-            {{ form.topic.label(class="form-control-label") }}
-            {%if form.topic.errors%}
-             {{ form.topic(class="form-control form-control-lg is-invalid") }}
-          <div class="invalid-feedback">
-            {%for error in form.topic.errors%}
-              <span> {{error}}</span>
-              {%endfor%}
-              </div>
-            {%else%}
-            {{form.topic (class="form-control form-control-lg")}}
-            {%endif%}
-          </div>
+    
+          <br>
+          Thema auswählen:<br>
+          <SELECT name='topic' id='topic'>
+            {% for topic in topiclist %} 
+            <OPTION value ={{topic.content}}> {{topic.content}}</OPTION>
+            {% endfor %} 
+          </SELECT> 
+          <br>
+    
           <br>
           
-          <div class="form-group">
-            {{ form.level.label(class="form-control-label") }}
-            {%if form.level.errors%}
-             {{ form.level(class="form-control form-control-lg is-invalid") }}
-          <div class="invalid-feedback">
-            {%for error in form.level.errors%}
-              <span> {{error}}</span>
-              {%endfor%}
-              </div>
-            {%else%}
-            {{form.level (class="form-control form-control-lg")}}
+          <br>
+          Schwierigkeitsgrad auswählen:<br>
+          <SELECT name='level' id='level'>
             
-            {%endif%}
-          </div>
+            <OPTION value =1> 1</OPTION>
+            <OPTION value =2> 2</OPTION>
+            <OPTION value =3> 3</OPTION>
+           
+          </SELECT> 
+          <br>
 
 
 

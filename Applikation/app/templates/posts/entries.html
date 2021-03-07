@@ -8,7 +8,7 @@
         <br>
         <br>
         <div>
-        <h1 style="display: inline">Datenbank</h1>
+        <h1 style="display: inline">Meine Aufgaben</h1>
         <br>
         <a style="display: inline " class= "btn btn-success float-right" href='/posts/new_post/'>+ Eingabe</a>
         </div>
@@ -24,6 +24,9 @@
             <img class="rounded-circle account-img" src="{{ url_for('static', filename='profile_pics/'+ post.autor.image_file) }}">
                 <div class="media-body">
                     <div class="article-metadata">
+                    <h4>Fach: <a class="article-titel" >{{ post.subject}}</a></h4> 
+                    <h4>Thema: <a class="article-titel" >{{ post.topic }}</a></h4> 
+                 
                     <h4><a class="article-titel" >{{ post.subject}},{{ post.topic }}</a></h4> 
                
                     <br>

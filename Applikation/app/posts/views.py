@@ -7,6 +7,7 @@ from app.posts.forms import PostForm
 from app.users.forms import LoginForm, RegistrationForm
 from app.users.models import User
 from app.posts.models import Post
+from app.topics.models import Topic
 from flask_login import login_user, current_user, login_required
 
 postmod = Blueprint('posts', __name__, url_prefix='/posts')
@@ -23,15 +24,16 @@ def new_post():
         db.session.commit()
         flash('Aufgabe wurde erstellt', 'success')
         return redirect(url_for('posts.entries'))
-    
-    return render_template('posts/new_post.html', title= 'Neue Aufgabe', form=form, legend='Neue Aufgabe')
+    topiclist = Topic.query.filter_by(user_id=current_user.id).all()
+    return render_template('posts/new_post.html', title= 'Neue Aufgabe', form=form, topiclist=topiclist, legend='Neue Aufgabe')
 
 
 
 @postmod.route('/entries/')
 def entries():   
        posts= Post.query.all()
-       return render_template('posts/entries.html', posts=posts)
+       postlist = Post.query.filter_by(user_id=current_user.id).all()
+       return render_template('posts/entries.html', posts=postlist)
 
 
 
