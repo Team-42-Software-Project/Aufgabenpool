@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{%block body %}
+
+<div class="content-section">
+    <form method ="POST" action="">
+    
+        {{  form.hidden_tag()  }}
+        <br>
+       
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4"> {{legend}}</legend>
+    
+            <br>
+          <br>
+    
+          <br>
+          Thema auswählen:<br>
+          <SELECT name='topic' id='topic'>
+            {% for topic in topiclist %} 
+            <OPTION value ={{topic.content}}> {{topic.content}}</OPTION>
+            {% endfor %} 
+          </SELECT> 
+          <br>
+    
+          <br>
+          
+          
+
+
+
+          
+
+        </fieldset>
+        <br>
+        <div class="form-group">
+        {{form.submit(class="btn btn-outline-info") }}
+        </div>
+        
+        <br>
+        <a class="btn btn-primary" href="/posts/entries/" role="button">Zu meinen Aufgaben</a>
+
+        <br><br>
+        <a class="btn btn-primary" href='/home' role="button">Zur Übersicht
+        </a>
+    </form>
+    <br>
+    <br>
+</div> 
+
+{% endblock body%}

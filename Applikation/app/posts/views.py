@@ -31,7 +31,7 @@ def new_post():
 
 @postmod.route('/entries/')
 def entries():   
-       posts= Post.query.all()
+       #posts= Post.query.all()
        postlist = Post.query.filter_by(user_id=current_user.id).all()
        return render_template('posts/entries.html', posts=postlist)
 
