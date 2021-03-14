@@ -18,6 +18,8 @@ class User(db.Model, UserMixin):
     password=db.Column(db.String(60), nullable=False)
     posts=db.relationship('Post', backref='autor', lazy=True)
     topics=db.relationship('Topic', backref='autor', lazy=True)
+    sheets=db.relationship('Sheet', backref='autor', lazy=True)
+    
 
 
     def __repr__(self):

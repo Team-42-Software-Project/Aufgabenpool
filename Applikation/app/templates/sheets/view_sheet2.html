@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{%block body %}
+
+<h2> {{sheet_title}}</h2>
+<br>
+{% for post in postlist%}
+
+    <article class="media content-section">
+        <div class="media">
+           
+            
+                <div class="media-body">
+                    <div class="article-metadata">
+                   
+                    <h4>Aufgabe</h4> 
+                 
+                    <p style="white-space:pre-wrap"> {{post.text}}</p>
+
+
+                     <br>
+                    <br>
+                </div>
+        </div>
+   
+       
+        <hr>
+        
+       
+    </article>
+        {%endfor%}
+
+{% endblock body%}

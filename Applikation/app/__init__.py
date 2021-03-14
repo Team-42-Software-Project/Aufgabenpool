@@ -27,6 +27,8 @@ from app.posts.views import postmod as postsModule
 app.register_blueprint(postsModule)
 from app.topics.views import topicmod as topicsModule
 app.register_blueprint(topicsModule)
+from app.sheets.views import sheetmod as sheetsModule
+app.register_blueprint(sheetsModule)
 
 
 

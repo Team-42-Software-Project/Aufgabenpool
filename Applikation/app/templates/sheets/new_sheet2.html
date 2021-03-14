@@ -1,0 +1,75 @@
+    {% extends 'base.html' %}
+
+      {%block head  %}
+      <title>Aufgaben</title>
+      {% endblock%}
+
+  {%block body  %}
+      <br>
+      <br>
+      <div>
+      <h1 style="display: inline">Meine Aufgaben zum Thema {{selected_topic}}</h1>
+      <br>
+      </div>
+      <div class="content-section">
+        <form method ="POST" action="">
+        
+            {{  form.hidden_tag()  }}
+            <br>
+            {% for post in posts%}
+            <article class="media content-section">
+               <div class="media">
+        
+                       <div class="media-body">
+                           <div class="article-metadata">
+                           <p>Level-{{post.level}}-Aufgabe</p>
+                           </div>
+                           <p style="white-space:pre-wrap"> {{post.text}}</p>
+         
+                        
+                       </div>
+               </div>
+               <input type=checkbox name=question value={{post.id}}> Auswählen<br/>
+          
+              
+               <hr>
+               
+              
+           </article>
+               {%endfor%}
+               <div class="form-group">
+                {{ form.title.label(class="form-control-label") }}
+                {%if form.title.errors%}
+                 {{ form.title(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {%for error in form.title.errors%}
+                  <span> {{error}}</span>
+                  {%endfor%}
+                  </div>
+                {%else%}
+                {{form.title (class="form-control form-control-lg")}}
+                {%endif%}
+    
+              </div>
+              <br>
+            <br>
+            <div class="form-group">
+            {{form.submit(class="btn btn-outline-info") }}
+            </div>
+            
+            <br>
+            <a class="btn btn-primary" href="/posts/entries/" role="button">Zu meinen Aufgaben</a>
+    
+            <br><br>
+            <a class="btn btn-primary" href='/home' role="button">Zur Übersicht
+            </a>
+        </form>
+        <br>
+        <br>
+    </div> 
+
+      <br>
+      <hr>
+     
+   
+      {% endblock%}
