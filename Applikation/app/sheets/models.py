@@ -5,8 +5,8 @@ class Sheet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title= db.Column(db.String(100), nullable=False, default='N/A')
     topic =db.Column(db.String(200), nullable=False, default='N/A')
-    #user_id=db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    #sheetposts=db.relationship('SheetPost', backref='sheetX', lazy=True)
+    user_id=db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+#sheetposts=db.relationship('SheetPost', backref='sheetX', lazy=True)
     
     def __repr__(self):
         return 'Aufgabenblatt  '
