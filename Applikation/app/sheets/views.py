@@ -74,6 +74,5 @@ def view_sheet2():
     postid_list=[]
     for item in sheetposts:
         postid_list.append(item.post_id)
-    print(postid_list)
     my_selected_postlist = Post.query.filter(Post.id.in_(postid_list)).order_by(Post.level).all()
     return render_template('sheets/view_sheet2.html',postlist=my_selected_postlist, sheet_title=sheet_title)
