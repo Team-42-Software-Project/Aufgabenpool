@@ -69,6 +69,17 @@
                 {%endif%}
     
               </div>
+              <br>
+                  <div class="form-group">
+                    {{ form.image_file.label() }}
+                    <br>
+                    {{ form.image_file(class="form-control-file") }}
+                    {% if form.image_file.errors %}
+                        {%for error in form.image_file.errors%}
+                             <span class="text-danger"> {{error}}</span></br>
+                        {%endfor%}
+                    {%endif%}
+                </div>  
         </fieldset>
         <br>
         <div class="form-group">

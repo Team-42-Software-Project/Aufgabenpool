@@ -9,6 +9,9 @@ class RegistrationForm(FlaskForm):
     email=StringField ('Email', validators=[DataRequired(), Email()]) 
     password=PasswordField('Password', validators=[DataRequired()])
     confirm_password=PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    image_file = FileField('Image_File', validators=[
+        FileAllowed(['jpg', 'png'], 'Images only!')
+    ])
     submit=SubmitField('Sign in')
 
     def validate_username(self, username):
