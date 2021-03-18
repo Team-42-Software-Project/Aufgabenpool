@@ -1,5 +1,6 @@
 import os
 import secrets
+from PIL import Image
 from flask import Blueprint, render_template, request, redirect, url_for, flash, abort
 from app import app, db, bcrypt 
 from app.users.forms import RegistrationForm, LoginForm
@@ -20,7 +21,7 @@ def register():
             user=User(username=form.username.data, email=form.email.data, password=hashed_password, image_file=form.image_file.data)
             db.session.add(user)
             db.session.commit()
-            flash(f'Account wurde gemacht, Sie können sich einloggen', 'success')
+            flash(f'Account wurde erstellt, Sie können sich einloggen', 'success')
             return redirect(url_for('users.login')) 
 
 
@@ -54,3 +55,4 @@ def logout():
 def users():   
        users= User.query.all()
        return render_template('users/view_users.html', users=users)
+
