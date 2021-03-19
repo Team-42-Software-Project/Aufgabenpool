@@ -21,7 +21,7 @@
  <th>Emailadresse</th> 
   {% for user in users%}
 <tr>
-  <td><img class="rounded-circle account-img" src="{{ url_for('static', filename='profile_pics/'+ user.image_file) }}">
+  <td><img class="rounded-circle account-img" style="width:50px;height:50px" src="{{ url_for('static', filename='profile_pics/'+ user.image_file) }}">
   </td>
   <td>{{ user.username}} </td>
   <td>{{ user.email }} </td>
