@@ -2,6 +2,7 @@
 
 {%block head %}
 <title>HOME</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock%}
 
 {%block body %}
@@ -11,12 +12,12 @@
 
 Sie sind eingeloggt. Jetzt kann der Spass beginnen. <br><br><br>
 
-<h1>Was möchten Sie tun?</h1>
+<h2>Was möchten Sie tun?</h2>
 
 
 </a>
 <br>
-<table >
+<table>
     <tr>
         <td>    
             <a class="btn btn-primary" href="/topics/new_topic" role="button"style="height:80px;width:150px">Ein neues Thema eingeben

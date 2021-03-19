@@ -2,18 +2,21 @@
 
         {%block head  %}
         <title>Aufgaben</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         {% endblock%}
 
     {%block body  %}
         <br>
+        <h1>PrepPool</h1>
+
+
         <br>
         <div>
-        <h1 style="display: inline">Alle meine Aufgaben</h1>
+        <h2>Alle meine Aufgaben</h2>
         <br>
         </div>
 
 
-        <br>
         <hr>
     {% for post in posts%}
 

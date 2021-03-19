@@ -1,14 +1,16 @@
     {% extends 'base.html' %}
 
-      {%block head  %}
-      <title>Aufgaben</title>
-      {% endblock%}
+    {%block head  %}
+           <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+          {% endblock%}
 
   {%block body  %}
       <br>
+<h1>PrepPool</h1>
+
       <br>
       <div>
-      <h1 style="display: inline">Meine Aufgaben zum Thema {{selected_topic}}</h1>
+      <h2 style="display: inline">Meine Aufgaben zum Thema {{selected_topic}}</h2>
       <br>
       </div>
       <div class="content-section">

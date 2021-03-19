@@ -2,29 +2,34 @@
 
 {%block head  %}
 <title>Themen</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> 
 {% endblock%}
 
 {%block body  %}
-
-
 <br>
+<h1>PrepPool</h1>
+    <br>
+
 <br>
 <div class="content">
-    <h1 style="text-align: center"> Themenübersicht</h1>
+    
+    <h2 style="text-align: left"> Themenübersicht</h2>
+    <br>
     {% if topics|length < 1 %}
-    <h4 style="text-align: center">Es gibt noch keine Themen. Bitte geben Sie eines ein.</h4>
+    <h4 style="text-align: left">Es gibt noch keine Themen. Bitte geben Sie eines ein.</h4>
     {% endif %}
-    <table>
+    <br>
+    <table id = "tables">
         <tr>
             <th>Thema</th>
             <th>Hinzugefügt am</th>
-            <th>von User No</th>
+           <!--<td> <th>von User No</th>-->
         </tr>
         {% for topic in topics %}
         <tr>
             <td>{{topic.content}}</td>
             <td>{{topic.date_created.date()}}</td>
-            <td>{{topic.user_id}}</td>
+            <!--<td>{{topic.user_id}}</td>-->
            
         </tr>
         {% endfor %}

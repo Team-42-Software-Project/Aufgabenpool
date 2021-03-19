@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 
+{%block head  %}
+  
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+      {% endblock%}
+
 {%block body %}
+<br>
+<h1>PrepPool</h1>
 
 <div class="content-section">
     <form method ="POST" action="">

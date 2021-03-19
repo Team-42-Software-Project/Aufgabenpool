@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 
-{%block body %}
+{%block head  %}
+<title>Neue Aufgabe</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"> 
+{% endblock%}
 
+{%block body %}
+<br>
+<h1>PrepPool</h1>
+
+    
 <div class="content-section">
     <form method ="POST" action="">
     
