@@ -15,24 +15,21 @@
 
 <br>
 <hr>
-{% for user in users%}
+<table border="0" cellpadding ="5">
+ <th>Profilbild</th> 
+ <th>Name</th> 
+ <th>Emailadresse</th> 
+  {% for user in users%}
+<tr>
+  <td><img class="rounded-circle account-img" src="{{ url_for('static', filename='profile_pics/'+ user.image_file) }}">
+  </td>
+  <td>{{ user.username}} </td>
+  <td>{{ user.email }} </td>
+</tr>
+  {%endfor%}
+</table>
+  
 
-<article class="media content-section">
-<div class="media">
-   
-    <img class="rounded-circle account-img" src="{{ url_for('static', filename='profile_pics/'+ user.image_file) }}">
-        <div class="media-body">
-            <div class="article-metadata">
-            <h4>{{ user.username}},</h4> 
-            <br>
-            <h4>{{ user.email }}</h4> 
-            <br>
-            </div>
-        </div>
-</div>
-
-</article>
-{%endfor%}
 <br>
 <a class="btn btn-primary" href='/home' role="button">Zur Übersicht
 </a>

@@ -21,7 +21,7 @@
         Wählen Sie ein Arbeitsblatt aus, um dieses anzusehen:<br><br>
         <SELECT name='id' id='id'>
           {% for sheet in sheetlist %} 
-          <OPTION value ={{sheet.id}}> ID:{{sheet.id}}Titel:{{sheet.title}}</OPTION>
+          <OPTION value ={{sheet.id}}> Titel: {{sheet.title}} (ID:{{sheet.id}})</OPTION>
           {% endfor %} 
         </SELECT> 
         <br>

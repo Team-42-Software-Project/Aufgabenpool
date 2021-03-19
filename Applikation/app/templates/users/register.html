@@ -2,7 +2,7 @@
 
 {% block body %}
 <div class="content-section">
-    <form method="POST" action="">
+    <form method="POST" enctype ="multipart/form-data" action="">
         {{ form.hidden_tag() }}
 
         <br>
@@ -80,6 +80,9 @@
                         {%endfor%}
                     {%endif%}
                 </div>  
+              </div>
+              <br>
+           
         </fieldset>
         <br>
         <div class="form-group">

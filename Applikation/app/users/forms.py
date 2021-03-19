@@ -33,4 +33,8 @@ class LoginForm(FlaskForm):
     remember=BooleanField('Remember Me')
     submit=SubmitField('Login')
 
+class TestForm(FlaskForm):
+    testtext = StringField('Testtext', validators=[DataRequired()])
+    testpicture = FileField('Test-Picture')
+    submit=SubmitField('Testsubmit')
 

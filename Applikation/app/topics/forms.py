@@ -9,4 +9,4 @@ from app. topics.models import Topic
 
 class TopicForm(FlaskForm):
     topic=StringField('Thema', validators=[DataRequired()])
-    submit=SubmitField('Post')
+    submit=SubmitField('Speichern')

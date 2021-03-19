@@ -8,9 +8,8 @@
         <br>
         <br>
         <div>
-        <h1 style="display: inline">Meine Aufgaben</h1>
+        <h1 style="display: inline">Alle meine Aufgaben</h1>
         <br>
-        <a style="display: inline " class= "btn btn-success float-right" href='/posts/new_post/'>+ Eingabe</a>
         </div>
 
 
@@ -48,7 +47,11 @@
        
     </article>
         {%endfor%}
+        <br>
+        
+        <a  class= "btn btn-primary" href='/posts/new_post/'>Eine weitere Aufgabe eingeben</a>
         <br><br>
+
         <a class="btn btn-primary" href='/home' role="button">Zur Übersicht
         </a>
         {% endblock%}
