@@ -13,7 +13,6 @@
         <br>
         <div>
         <h2>Alle meine Aufgaben</h2>
-        <br>
         </div>
 
 
@@ -26,21 +25,12 @@
             
                 <div class="media-body">
                     <div class="article-metadata">
-                    <h4>Fach: <a class="article-titel" >{{ post.subject}}</a></h4> 
-                    <h4>Thema: {{ post.topic }}</h4> 
-                 
-                    <h4><a class="article-titel" >{{ post.subject}},{{ post.topic }}</a></h4> 
-               
-                    <br>
-                    <p>Level:{{post.level}}, von:{{post.autor.username}}</p>
-                    <br>
+                    <h5>Fach: {{ post.subject}}, Thema: {{ post.topic }}</h5> 
+                    <p>Level:{{post.level}}, von:{{post.autor.username}} am {{post.date_posted.strftime('%d -%m-%Y')}}</p>
                     </div>
                     <p style="white-space:pre-wrap"> {{post.text}}</p>
-
-
-                    <small>{{post.date_posted.strftime('%d -%m-%Y')}}</small>
-                    <br>
-                    <br>
+                    <a class= "btn btn-primary" href='/posts/entries/edit/{{post.id}}'>ändern</a>
+                    <a class= "btn btn-danger" href='/posts/entries/delete/{{post.id}}'>löschen</a>
                 </div>
         </div>
    
