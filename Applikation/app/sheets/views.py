@@ -44,7 +44,8 @@ def new_sheet2():
             new_sheet_post=SheetPost(post_id=id, sheet_id=newsheet.id)
             db.session.add(new_sheet_post)
             db.session.commit()
-        return redirect(url_for('sheets.new_sheet3',selected_topic=selected_topic))
+        #return redirect(url_for('sheets.new_sheet3',selected_topic=selected_topic))
+        return redirect(url_for('sheets.view_sheet2',selected_sheet = newsheet.id))
     return render_template('sheets/new_sheet2.html', posts=postlist,selected_topic=selected_topic, form=form)
     
 
