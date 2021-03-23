@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{%block head  %}
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+      {% endblock%}
+
 {% block body %}
 <br>
 <h1>PrepPool</h1>
@@ -89,7 +93,7 @@
         </fieldset>
         <br>
         <div class="form-group">
-            {{form.submit(class="btn btn-outline.info") }}
+            {{form.submit(class="btn btn-outline-info") }}
         </div>
     </form>
 </div>
