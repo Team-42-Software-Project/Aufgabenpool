@@ -17,18 +17,19 @@ topicmod = Blueprint('topics', __name__, url_prefix='/topics')
 def new_topic():
     form =TopicForm()
     if form.validate_on_submit():
-        my_new_topic= Topic(content=form.topic.data, autor=current_user)
-        
-        db.session.add(my_new_topic)
-        db.session.commit()
-        flash('Thema wurde hinzugefügt', 'success')
+        add_topic_to_db(form)
         return redirect(url_for('topics.new_topic'))
     else:
-        
- 	# topics = Topic.query.order_by(Topic.date_created).all()
-       	# print("Current User")
-       	# print(current_user.id)
         topics = Topic.query.filter_by(user_id=current_user.id).all()
         return render_template("topics/new_topic.html", topics=topics,form=form)
    
+def add_topic_to_db(form):
+    my_new_topic= Topic(content=form.topic.data, autor=current_user)       
+    db.session.add(my_new_topic)
+    db.session.commit()
+
+def mytest(number):
+    return number
     
+
+
