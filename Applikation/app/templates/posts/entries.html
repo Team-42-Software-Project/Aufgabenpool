@@ -12,7 +12,7 @@
 
         <br>
         <div>
-        <h2>Alle meine Aufgaben</h2>
+        <h2>Meine Aufgaben   <a  class= "btn btn-outline-secondary" href='/posts/new_post/'>Eine weitere Aufgabe eingeben</a></h2>
         </div>
 
 
@@ -25,12 +25,11 @@
             
                 <div class="media-body">
                     <div class="article-metadata">
-                    <h5>Fach: {{ post.subject}}, Thema: {{ post.topic }}</h5> 
-                    <p>Level:{{post.level}}, von:{{post.autor.username}} am {{post.date_posted.strftime('%d -%m-%Y')}}</p>
+                    <p style="font-weight: bold;"> Fach: {{ post.subject}}, Thema: {{ post.topic }}, Level: {{post.level}}<!-- von:{{post.autor.username}} am {{post.date_posted.strftime('%d -%m-%Y')}}--></p>
                     </div>
                     <p style="white-space:pre-wrap"> {{post.text}}</p>
-                    <a class= "btn btn-primary" href='/posts/entries/edit/{{post.id}}'>ändern</a>
-                    <a class= "btn btn-danger" href='/posts/entries/delete/{{post.id}}'>löschen</a>
+                    <a class= "btn btn-outline-secondary btn-sm" href='/posts/entries/edit/{{post.id}}'>ändern</a>
+                    <a class= "btn btn-outline-danger btn-sm" href='/posts/entries/delete/{{post.id}}'>löschen</a>
                 </div>
         </div>
    
@@ -42,10 +41,7 @@
         {%endfor%}
         <br>
         
-        <a  class= "btn btn-primary" href='/posts/new_post/'>Eine weitere Aufgabe eingeben</a>
-        <br><br>
-
-        <a class="btn btn-primary" href='/home' role="button">Zur Übersicht
-        </a>
+        
+       
         {% endblock%}
  
