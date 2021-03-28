@@ -1,0 +1,47 @@
+    {% extends 'base.html' %}
+
+    {%block head  %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+   {% endblock%}
+
+  {%block body  %}
+  <br>
+  <h1>PrepPool</h1>
+  
+      <br>
+      <div>
+      <h1 style="display: inline">Meine ausgewählten Aufgaben zum Thema {{selected_topic}}</h1>
+      <br>
+      </div>
+Dies funktioniert noch nicht, aber über Uebersicht/ Aufgabenblatt ansehen, sieht man das 
+Arbeitsblatt.
+
+      <br>
+      <hr>
+  {% for post in posts%}
+
+  <article class="media content-section">
+      <div class="media">
+         
+          
+              <div class="media-body">
+                  <div class="article-metadata">
+                  <p>Level:{{post.level}}</p>
+                  </div>
+                  Aufgabentext:
+                  <p style="white-space:pre-wrap"> {{post.text}}</p>
+
+              </div>
+      </div>
+ 
+     
+      <hr>
+      
+     
+  </article>
+      {%endfor%}
+      <br><br>
+      <a class="btn btn-primary" href='/home' role="button">Zur Übersicht
+      </a>
+    <br/>
+      {% endblock%}

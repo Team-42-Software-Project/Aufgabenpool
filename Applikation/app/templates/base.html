@@ -5,6 +5,7 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
 
+
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
     <script src='main.js'></script>
@@ -13,7 +14,43 @@
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <link rel="stylesheet" href="static/css/style.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .dropbtn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+    
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown-content a:hover {background-color: #ddd;}
+    
+    .dropdown:hover .dropdown-content {display: block;}
+    
+    .dropdown:hover .dropbtn {background-color: #3e8e41;}
+    </style>
     {%block head %} {% endblock%}
 </head>
 
@@ -25,14 +62,42 @@
             <a class="navbar-brand" href="{{ url_for('home2') }}">Home </a>
             <a class="navbar-brand" href="{{ url_for('users.users') }}">Eingeloggt als: {{current_user.username}}</a>
             <a class="navbar-brand" href="/users/logout">Logout</a>
-          
-    
+            
+           
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Aufgaben</button>
+            <div class="dropdown-content">
+              <a href="/posts/entries/">ansehen und ändern</a>
+              <a href="/posts/new_post">eingeben</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">Themen</button>
+            <div class="dropdown-content">
+              <a href="/topics/new_topic">ansehen und eingeben</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">Aufgabenblätter</button>
+            <div class="dropdown-content">
+              <a href="/sheets/new_sheet">erstellen</a>
+              <a href="/sheets/view_sheet">ansehen</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">Benutzer</button>
+            <div class="dropdown-content">
+              <a href="/users/view_users">ansehen</a>
+            </div>
+          </div>
             {%else%}
             <a class="navbar-brand" href="{{ url_for('home') }}">Home</a>
             <a class="navbar-brand" href="/users/register">Registrieren Sie sich</a>
             <a class="navbar-brand" href="/users/login" tabindex="-1" aria-disabled="true">Log In</a>
             {%endif%}
         </div>
+      
     </nav>
   <div class="container">
     {% with messages = get_flashed_messages(with_categories=true) %}
