@@ -1,5 +1,6 @@
 import unittest
 from app.topics.views import mytest
+from app import db
 
 
 
