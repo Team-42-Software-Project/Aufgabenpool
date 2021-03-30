@@ -3,7 +3,7 @@ import secrets
 from PIL import Image
 from flask import Blueprint, render_template, request, redirect, url_for, flash, abort
 from app import app, db, bcrypt 
-from app.users.forms import RegistrationForm, LoginForm, TestForm
+from app.users.forms import RegistrationForm, LoginForm, TestForm, UpdateAccountForm
 from app.users.models import User
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -75,3 +75,25 @@ def save_profile_pic(profile_pic):
 
     return hex_picture_name
 
+@mod.route('/update_account', methods=['GET', 'POST'])
+@login_required
+def account():
+    form=UpdateAccountForm()
+    if form.validate_on_submit():
+        if form.password.data:
+            hashed_password=bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+            current_user.password=hashed_password 
+        if form.image_file.data:
+            img_file= save_profile_pic(form.image_file.data)
+            current_user.image_file=img_file
+        else:
+            current_user.image_file="default.png"
+        db.session.commit()
+        flash('Profil wurde angepasst', 'success')
+        return redirect(url_for('home2'))
+   
+
+    image_file=url_for('static', filename='profile_pics/'+ current_user.image_file)
+    return render_template('users/update_account.html', title='Account', image_file=image_file, form=form)
+
+   

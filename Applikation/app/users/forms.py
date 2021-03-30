@@ -33,6 +33,16 @@ class LoginForm(FlaskForm):
     remember=BooleanField('Remember Me')
     submit=SubmitField('Login')
 
+class UpdateAccountForm(FlaskForm):
+    password=PasswordField('Neues Passwort')
+    confirm_password=PasswordField('Passwort erneut eingeben', validators=[EqualTo('password')])
+    image_file = FileField('Neues Profilbild', validators=[
+        FileAllowed(['jpg', 'png'], 'Images only!')
+    ])
+    submit=SubmitField('Speichern')
+
+
+
 class TestForm(FlaskForm):
     testtext = StringField('Testtext', validators=[DataRequired()])
     testpicture = FileField('Test-Picture')
