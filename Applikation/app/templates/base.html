@@ -17,11 +17,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
     .dropbtn {
-      background-color: #4CAF50;
+      background-color: #9c9797;
       color: white;
       padding: 16px;
-      font-size: 16px;
+      font-size: 13px;
       border: none;
+      width: 120px;
     }
     
     .dropdown {
@@ -33,9 +34,10 @@
       display: none;
       position: absolute;
       background-color: #f1f1f1;
-      min-width: 160px;
+      min-width: 120px;
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       z-index: 1;
+      font-size: 13px;
     }
     
     .dropdown-content a {
@@ -49,7 +51,7 @@
     
     .dropdown:hover .dropdown-content {display: block;}
     
-    .dropdown:hover .dropbtn {background-color: #3e8e41;}
+    .dropdown:hover .dropbtn {background-color: #7f8180;}
     </style>
     {%block head %} {% endblock%}
 </head>
@@ -57,42 +59,67 @@
 <body>
     
     <nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
-        <div class="container-fluid">
+        
             {% if current_user.is_authenticated %}
-            <a class="navbar-brand" href="{{ url_for('home2') }}">Home </a>
-            <a class="navbar-brand" href="{{ url_for('users.users') }}">Eingeloggt als: {{current_user.username}}</a>
-            <a class="navbar-brand" href="/users/logout">Logout</a>
             
            
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">Aufgaben</button>
-            <div class="dropdown-content">
-              <a href="/posts/entries/">ansehen und ändern</a>
-              <a href="/posts/new_post">eingeben</a>
-            </div>
-          </div>
-          <div class="dropdown">
-            <button class="dropbtn">Themen</button>
-            <div class="dropdown-content">
-              <a href="/topics/new_topic">ansehen und eingeben</a>
-            </div>
-          </div>
-          <div class="dropdown">
-            <button class="dropbtn">Aufgabenblätter</button>
-            <div class="dropdown-content">
-              <a href="/sheets/new_sheet">erstellen</a>
-              <a href="/sheets/view_sheet">ansehen</a>
-            </div>
-          </div>
-          <div class="dropdown">
-            <button class="dropbtn">Benutzer</button>
-            <div class="dropdown-content">
-              <a href="/users/view_users">ansehen</a>
-            </div>
-          </div>
+            
+          
+          <table>
+            <tr>
+                <td>  
+                  <a class="navbar-brand" href="{{ url_for('home2') }}">    PrepPool</a>
+                </td> 
+                <td>     
+                  <div class="dropdown">
+                    <button class="dropbtn">Aufgaben</button>
+                    <div class="dropdown-content">
+                      <a href="/posts/entries/">ansehen und ändern</a>
+                      <a href="/posts/new_post">eingeben</a>
+                    </div>
+                  </div>
+                </td>
+                <td>     
+                  <div class="dropdown">
+                    <button class="dropbtn">Themen</button>
+                    <div class="dropdown-content">
+                      <a href="/topics/new_topic">ansehen und eingeben</a>
+                    </div>
+                  </div> 
+                </td>
+                <td> 
+                  <div class="dropdown">
+                    <button class="dropbtn">Aufgabenblätter</button>
+                    <div class="dropdown-content">
+                      <a href="/sheets/new_sheet">erstellen</a>
+                      <a href="/sheets/view_sheet">ansehen</a>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="dropdown">
+                    <button class="dropbtn">Benutzer</button>
+                    <div class="dropdown-content">
+                      <a href="/users/view_users">ansehen</a>
+                    </div>
+                  </div>
+                </td>
+              </tr> 
+            </table> 
+            <table>
+              <tr>
+                  <td>
+                  <a class="navbar-brand" href="{{ url_for('users.users') }}">Mein Profil</a>
+                </td>
+                  <td>
+
+                 
+                  <a class="navbar-brand" href="/users/logout">Logout</a> 
+                </td>
+              </tr>
+            </table> 
             {%else%}
-            <a class="navbar-brand" href="{{ url_for('home') }}">Home</a>
+            <a class="navbar-brand" href="{{ url_for('home') }}">PrepPool</a>
             <a class="navbar-brand" href="/users/register">Registrieren Sie sich</a>
             <a class="navbar-brand" href="/users/login" tabindex="-1" aria-disabled="true">Log In</a>
             {%endif%}
