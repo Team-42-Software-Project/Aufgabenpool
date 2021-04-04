@@ -13,4 +13,8 @@ class SelectTopicForm(FlaskForm):
 
 class SelectSheetForm(FlaskForm):
     id =IntegerField('Arbeitsblatt-ID', validators=[DataRequired()])
+    submit=SubmitField('Herunterladen')
+
+class SelectSheetViewForm(FlaskForm):
+    id =IntegerField('Arbeitsblatt-ID', validators=[DataRequired()])
     submit=SubmitField('Ansehen')

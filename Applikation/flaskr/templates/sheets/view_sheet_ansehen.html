@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{%block head  %}
+           <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+          {% endblock%}
+
+{%block body %}
+<br>
+<h1>PrepPool</h1>
+
+<br>
+<div>
+<h2>Alle meine Aufgabenblätter</h2>
+</div>
+
+<div class="content-section">
+  <form method ="POST" action="">
+  
+      {{  form.hidden_tag()  }}
+      <br>
+     
+      <fieldset class="form-group">
+          <legend class="border-bottom mb-4"> {{legend}}</legend>
+  
+          <br>
+       
+        <br>
+  
+        <br>
+        Wählen Sie ein Arbeitsblatt aus, um dieses anzusehen:<br><br>
+        <SELECT name='id' id='id'>
+          {% for sheet in sheetlist %} 
+          <OPTION value ={{sheet.id}}> Titel: {{sheet.title}} (ID:{{sheet.id}})</OPTION>
+          {% endfor %} 
+        </SELECT> 
+        <br>
+  
+        <br>
+        
+        
+
+
+
+        <br>
+        
+        <br>
+
+      </fieldset>
+      <br>
+      <div class="form-group">
+      {{form.submit(class="btn btn-outline-info") }}
+      </div>
+      
+      <br>
+      <a class="btn btn-primary" href="/posts/entries/" role="button">Zu meinen Aufgaben</a>
+
+      <br>
+  </form>
+  <br>
+  <br>
+</div> 
+        
+
+{% endblock body%}
