@@ -1,4 +1,4 @@
-
+{% extends 'base.html' %}
 
 {%block head  %}
            <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -8,7 +8,7 @@
 <br>
 
 
-<h1> {{sheet_title}}</h1>
+<h2> {{sheet_title}}</h2>
 <br>
 {% for post in postlist%}
 
@@ -19,7 +19,7 @@
                 <div class="media-body">
                     <div class="article-metadata">
                    
-                    <h4>Aufgabe</h4> 
+                    <h4>Aufgabe {{loop.index}}</h4> 
                  
                     <p style="white-space:pre-wrap"> {{post.text}}</p>
 
@@ -34,6 +34,28 @@
         
        
     </article>
+    
         {%endfor%}
-
+        <br>
+      
+        <br>
+        <div class="content-section">
+            <form method ="POST" action="">
+            
+                {{  form.hidden_tag()  }}
+                <br>
+               
+                
+            
+                 
+          
+                </fieldset>
+                <br>
+                <div class="form-group">
+                {{form.submit(class="btn btn-outline-info") }}
+                </div>
+                
+                <br>
+               
+            </form>
 {% endblock body%}

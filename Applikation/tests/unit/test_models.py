@@ -1,6 +1,9 @@
 from flaskr.users.models import User
 
-def test_new_user():
+
+ 
+
+def test_new_user(client):
     """
     GIVEN a User model
     WHEN a new User is created
@@ -15,3 +18,6 @@ def test_new_user():
     assert user.posts == []
     assert user.topics == []
     assert user.sheets == []
+   
+
+

@@ -6,7 +6,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash,
 from flaskr import app, db, bcrypt 
 from flaskr.posts.forms import PostForm
 from flaskr.users.forms import LoginForm, RegistrationForm
-from flaskr.sheets.forms import SheetForm, SelectTopicForm, SelectSheetForm, SelectSheetViewForm
+from flaskr.sheets.forms import SheetForm, SelectTopicForm, SelectSheetForm, SelectSheetViewForm, PdfForm
 from flaskr.users.models import User
 from flaskr.posts.models import Post
 from flaskr.topics.models import Topic
@@ -46,7 +46,7 @@ def new_sheet2():
             db.session.add(new_sheet_post)
             db.session.commit()
         #return redirect(url_for('sheets.new_sheet3',selected_topic=selected_topic))
-        return redirect(url_for('sheets.view_sheet2',selected_sheet = newsheet.id))
+        return redirect(url_for('sheets.view_sheet_preview',selected_sheet = newsheet.id))
     return render_template('sheets/new_sheet2.html', posts=postlist,selected_topic=selected_topic, form=form)
     
 
@@ -61,9 +61,7 @@ def new_sheet3():
 def view_sheet():
     sheetlist = Sheet.query.filter_by(user_id=current_user.id).all()
     form = SelectSheetForm()
-    print(form.validate_on_submit())
     if form.validate_on_submit():
-        print(form.id.data)
         return redirect(url_for('sheets.view_sheet2',selected_sheet = form.id.data))
     return render_template('sheets/view_sheet.html',sheetlist=sheetlist, form=form)
 
@@ -72,7 +70,6 @@ def view_sheet():
 def view_sheet_ansehen():
     sheetlist = Sheet.query.filter_by(user_id=current_user.id).all()
     form = SelectSheetViewForm()
-    print(form.validate_on_submit())
     if form.validate_on_submit():
         print(form.id.data)
         return redirect(url_for('sheets.view_sheet_preview',selected_sheet = form.id.data))
@@ -86,33 +83,20 @@ def view_sheet_preview():
     sheet_title=Sheet.query.filter_by(id=selected_sheet_id).first().title
     sheetposts = SheetPost.query.filter_by(sheet_id=selected_sheet_id).all()
     postid_list=[]
+    form = PdfForm()
     for item in sheetposts:
         postid_list.append(item.post_id)
     my_selected_postlist = Post.query.filter(Post.id.in_(postid_list)).order_by(Post.level).all()
-    return render_template('sheets/view_sheet2.html',postlist=my_selected_postlist, sheet_title=sheet_title)
+    if form.validate_on_submit():
+        rendered_html = render_template('sheets/view_pdf_sheet.html',postlist=my_selected_postlist, sheet_title=sheet_title)
+        wkhtmltopdf_options = {'enable-local-file-access': None}
+        config = pdfkit.configuration(wkhtmltopdf="C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe")
+        my_pdf = pdfkit.from_string(rendered_html,False, options = wkhtmltopdf_options, configuration = config)
+        response = make_response(my_pdf)
+        response.headers["Content-Type"]="application/pdf"
+        response.headers["Content-Disposition"]="inline; filename=output.pdf"
+        return response
+    return render_template('sheets/view_pdf_preview.html',postlist=my_selected_postlist, sheet_title=sheet_title, form = form)
 
 
 
-@sheetmod.route('/view_sheet2/', methods=['GET', 'POST'])
-@login_required
-def view_sheet2():
-    selected_sheet_id = request.args['selected_sheet']
-    sheet_title=Sheet.query.filter_by(id=selected_sheet_id).first().title
-    sheetposts = SheetPost.query.filter_by(sheet_id=selected_sheet_id).all()
-    postid_list=[]
-    for item in sheetposts:
-        postid_list.append(item.post_id)
-    my_selected_postlist = Post.query.filter(Post.id.in_(postid_list)).order_by(Post.level).all()
-    #return render_template('sheets/view_sheet2.html',postlist=my_selected_postlist, sheet_title=sheet_title)
-    print("make pdf")
-    rendered_html = render_template('sheets/view_sheet3.html',postlist=my_selected_postlist, sheet_title=sheet_title)
-    print("rendered")
-    wkhtmltopdf_options = {'enable-local-file-access': None}
-    config = pdfkit.configuration(wkhtmltopdf="C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe")
-    my_pdf = pdfkit.from_string(rendered_html,False, options = wkhtmltopdf_options, configuration = config)
-    print("my_pdf done")
-    response = make_response(my_pdf)
-    print("response done")
-    response.headers["Content-Type"]="application/pdf"
-    response.headers["Content-Disposition"]="inline; filename=output.pdf"
-    return response

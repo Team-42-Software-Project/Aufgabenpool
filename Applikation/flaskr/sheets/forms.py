@@ -18,3 +18,6 @@ class SelectSheetForm(FlaskForm):
 class SelectSheetViewForm(FlaskForm):
     id =IntegerField('Arbeitsblatt-ID', validators=[DataRequired()])
     submit=SubmitField('Ansehen')
+
+class PdfForm(FlaskForm):
+    submit = SubmitField('In Pdf konvertieren')
