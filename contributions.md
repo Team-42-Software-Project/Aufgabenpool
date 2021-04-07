@@ -1,4 +1,4 @@
-Stellungnahme zum persönlichen Beitrag von Melanie Rast:
+### Stellungnahme zum persönlichen Beitrag von Melanie Rast:
 
 Über alle Aufgabenblätter: GitHub-Projekte erstellen und Up-to-Date halten
 
@@ -20,7 +20,9 @@ Stellungnahme zum persönlichen Beitrag von Melanie Rast:
 * Implementierung der User Stories 4, 21
 * User Story Assessment and Validation
 
-Stellungnahme zum persönlichen Beitrag von Annette Müller:
+
+
+### Stellungnahme zum persönlichen Beitrag von Annette Müller:
 1.	Aufgabenblatt:
 *	Beschreibung des Problems, sowie Begründung des Projekts
 *	Vorbereitung und Durchführung der 1. Präsentation
